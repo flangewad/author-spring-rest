@@ -12,11 +12,13 @@ import static org.hamcrest.core.Is.is;
 public class AuthorServiceTest {
     private AuthorService authorService;
     private AuthorRepository authorRepository;
+    private BookRepository bookRepository;
 
     @Before
     public void setUp() {
         authorRepository = Mockito.mock(AuthorRepository.class);
-        authorService = new AuthorService(authorRepository);
+        bookRepository = Mockito.mock(BookRepository.class);
+        authorService = new AuthorService(authorRepository, bookRepository);
     }
 
     @Test
@@ -24,7 +26,12 @@ public class AuthorServiceTest {
 
         List allAuthors = Mockito.mock(List.class);
         Mockito.when(authorRepository.findAll()).thenReturn(allAuthors);
-        assertThat(authorService.getAuthors(), is(allAuthors));
+        List booksByAuthor = Mockito.mock(List.class);
+//        Mockito.when(bookRepository.findByAuthor()).thenReturn(booksByAuthor);
+
+
+
+        assertThat(authorService.getAuthorsAndTheirBooks(), is(allAuthors));
 
     }
 

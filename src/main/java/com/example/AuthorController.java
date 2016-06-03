@@ -18,6 +18,6 @@ public class AuthorController {
 
     @RequestMapping("/authors")
     public List<Author> getAuthors() {
-        return authorService.getAuthors();
+        return authorService.getAuthorsAndTheirBooks();
     }
 }

@@ -8,15 +8,16 @@ import java.util.List;
 @Service
 public class AuthorService {
     private AuthorRepository authorRepository;
+    private BookRepository bookRepository;
 
     @Autowired
-    public AuthorService(AuthorRepository authorRepository) {
-
+    public AuthorService(AuthorRepository authorRepository, BookRepository bookRepository) {
         this.authorRepository = authorRepository;
+        this.bookRepository = bookRepository;
     }
 
-    public List<Author> getAuthors() {
-        return authorRepository.findAll();
+    public List<Author> getAuthorsAndTheirBooks() {
+        return  authorRepository.findAll();
     }
 
 

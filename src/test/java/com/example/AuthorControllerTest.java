@@ -31,15 +31,14 @@ public class AuthorControllerTest {
 
     @Test
     public void getAuthorsReturnsAuthorsFromService() throws Exception{
-        List<Author> authors = new ArrayList<>();
+        List<Author> authorsAndTheirBooks = new ArrayList<>();
 
-        when(authorService.getAuthors()).thenReturn(authors);
+        when(authorService.getAuthorsAndTheirBooks()).thenReturn(authorsAndTheirBooks);
 
         mockMvc.perform(get("/authors"))
                 .andExpect(status().isOk());
-//                .andExpect(body())
 
-        verify(authorService).getAuthors();
+        verify(authorService).getAuthorsAndTheirBooks();
     }
 
 }
